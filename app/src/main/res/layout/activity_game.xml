@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:id="@+id/opponentCardLayout"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,7 +20,24 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:contentDescription="image of the back of a card"
-            android:src="@drawable/back_of_card" />
+            android:src="@drawable/back_of_card"
+            android:layout_weight="2"/>
+
+        <TextView
+            android:id="@+id/playerScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player: 0"
+            android:textSize="16sp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/opponentScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opponent: 0"
+            android:textSize="16sp"
+            android:layout_weight="1" />
 
     </LinearLayout>
     <LinearLayout
@@ -52,11 +69,12 @@
     </LinearLayout>
     <LinearLayout
         android:id="@+id/playerCardLayout"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnLayout"
         >
 
         <ImageView
@@ -65,31 +83,39 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:contentDescription="image of the back of a card"
-            android:src="@drawable/back_of_card"/>
-
+            android:src="@drawable/back_of_card"
+            android:layout_weight="2"/>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/flipBtn"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="130dp"
+    <LinearLayout
+        android:id="@+id/btnLayout"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginBottom="40dp"
-        android:text="Flip Card"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/playerCardLayout" />
+        app:layout_constraintStart_toEndOf="@+id/playerCardLayout">
 
-    <Button
-        android:id="@+id/drawBtn"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:text="Draw Card"
-        app:layout_constraintBottom_toTopOf="@+id/flipBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/playerCardLayout" />
+        <Button
+            android:id="@+id/flipBtn"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Flip Card"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/drawBtn"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Draw Card" />
+
+    </LinearLayout>
 
 
 
