@@ -103,7 +103,6 @@ class GameActivity : AppCompatActivity() {
         opponentScoreView.text = "Opponent: $opponentWins"
     }
 
-
     fun generateDeck(): MutableList<Card> {
         val suits = listOf("hearts", "diamonds", "clubs", "spades")
         val rankToValue = mapOf(
