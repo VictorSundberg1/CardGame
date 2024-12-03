@@ -11,13 +11,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class GameActivity : AppCompatActivity() {
 
     var playerWins = 0
     var opponentWins = 0
+    val roundResults = mutableListOf<RoundResult>()
     lateinit var playerCard: Card
     lateinit var opponentCard: Card
+    lateinit var roundResultsAdapter: RoundResultsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +33,11 @@ class GameActivity : AppCompatActivity() {
             insets
         }
 
+        val recyclerView: RecyclerView = findViewById(R.id.rv_results)
+        roundResultsAdapter = RoundResultsAdapter(roundResults)
+        recyclerView.adapter = roundResultsAdapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
         val deck = generateDeck()
 
         val playerCardView: ImageView = findViewById(R.id.playerCard)
@@ -39,7 +48,7 @@ class GameActivity : AppCompatActivity() {
 
         drawButton.setOnClickListener {
             if (deck.size < 2){
-                showResult("No more cards left in the deck! Game over")
+                Toast.makeText(this, "No more cards left in the deck! Game over", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -54,7 +63,7 @@ class GameActivity : AppCompatActivity() {
 
         flipButton.setOnClickListener {
             if (deck.isEmpty()){
-                showResult("No more cards left in the deck! Game over")
+                Toast.makeText(this, "No more cards left in the deck! Game over", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -64,17 +73,22 @@ class GameActivity : AppCompatActivity() {
             val playerDifference = kotlin.math.abs(flippedCard.value - playerCard.value)
             val opponentDifference = kotlin.math.abs(flippedCard.value - opponentCard.value)
 
+            val result: String = when {
+                playerDifference < opponentDifference -> "Player wins!"
+                opponentDifference < playerDifference -> "Opponent wins!"
+                else -> "Its a tie!"
+            }
+
+            roundResults.add(0, RoundResult(roundResults.size + 1, result))
+            roundResultsAdapter.notifyItemInserted(0)
+            recyclerView.scrollToPosition(0)
+
             when {
                 playerDifference < opponentDifference -> {
                     playerWins++
-                    showResult("Player wins this round!")
                 }
                 opponentDifference < playerDifference -> {
                     opponentWins++
-                    showResult("Opponent wins this round!")
-                }
-                else -> {
-                    showResult("It's a tie!")
                 }
             }
             updateScores()
@@ -84,16 +98,6 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-        fun resetGame(){
-            playerWins = 0
-            opponentWins = 0
-            updateScores()
-        }
-
-
-    fun showResult(text: String){
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
-    }
 
     fun updateScores(){
         val playerScoreView: TextView = findViewById(R.id.playerScore)
