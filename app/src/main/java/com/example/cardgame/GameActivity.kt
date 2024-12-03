@@ -16,12 +16,12 @@ import androidx.recyclerview.widget.RecyclerView
 
 class GameActivity : AppCompatActivity() {
 
-    var playerWins = 0
-    var opponentWins = 0
-    val roundResults = mutableListOf<RoundResult>()
-    lateinit var playerCard: Card
-    lateinit var opponentCard: Card
-    lateinit var roundResultsAdapter: RoundResultsAdapter
+    private var playerWins = 0
+    private var opponentWins = 0
+    private val roundResults = mutableListOf<RoundResult>()
+    private lateinit var playerCard: Card
+    private lateinit var opponentCard: Card
+    private lateinit var roundResultsAdapter: RoundResultsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -99,7 +99,7 @@ class GameActivity : AppCompatActivity() {
     }
 
 
-    fun updateScores(){
+    private fun updateScores(){
         val playerScoreView: TextView = findViewById(R.id.playerScore)
         val opponentScoreView: TextView = findViewById(R.id.opponentScore)
 
@@ -107,7 +107,7 @@ class GameActivity : AppCompatActivity() {
         opponentScoreView.text = "Opponent: $opponentWins"
     }
 
-    fun generateDeck(): MutableList<Card> {
+    private fun generateDeck(): MutableList<Card> {
         val suits = listOf("hearts", "diamonds", "clubs", "spades")
         val rankToValue = mapOf(
             "two" to 2, "three" to 3, "four" to 4, "five" to 5,
@@ -127,13 +127,13 @@ class GameActivity : AppCompatActivity() {
         return deck
     }
 
-    fun getCardImageResource(rank: String, suit: String): Int {
+    private fun getCardImageResource(rank: String, suit: String): Int {
         val resourceName = "${rank.lowercase()}_of_${suit.lowercase()}"
         return CardImageMap.cardResources[resourceName]?:
         throw IllegalArgumentException("$resourceName not found")
     }
 
-    fun displayCard(imageView: ImageView, card: Card){
+    private fun displayCard(imageView: ImageView, card: Card){
         imageView.setImageResource(card.imageId)
     }
 }

@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_blue"
     tools:context=".GameActivity">
 
     <LinearLayout
@@ -22,7 +23,7 @@
             android:id="@+id/opponentCard"
             android:layout_width="120dp"
             android:layout_height="180dp"
-            android:contentDescription="Opponents card"
+            android:contentDescription="@string/opponents_card_description"
             android:src="@drawable/back_of_card" />
 
         <TextView
@@ -30,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="Opponent: 0"
+            android:text="@string/opponent_score"
             android:textSize="18sp"
             android:textStyle="bold"
             android:gravity="center" />
@@ -51,7 +52,8 @@
             android:id="@+id/flippedCard"
             android:layout_width="120dp"
             android:layout_height="180dp"
-            android:contentDescription="Flipped card"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@string/flipped_card_description"
             android:src="@drawable/back_of_card" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -78,7 +80,7 @@
             android:id="@+id/playerCard"
             android:layout_width="120dp"
             android:layout_height="180dp"
-            android:contentDescription="Player's card"
+            android:contentDescription="@string/player_card_description"
             android:src="@drawable/back_of_card" />
 
         <TextView
@@ -86,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Player: 0"
+            android:text="@string/player_score"
             android:textSize="18sp"
             android:textStyle="bold"
             android:gravity="center" />
@@ -108,7 +110,7 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Flip Card"
+            android:text="@string/flip_card_btn"
             android:visibility="invisible" />
 
         <Button
@@ -116,6 +118,6 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Draw Card" />
+            android:text="@string/draw_card_btn" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

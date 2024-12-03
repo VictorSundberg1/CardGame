@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:padding="16dp"
         android:layout_margin="16dp"
-        android:background="#527CDCD6"
+        android:background="@color/light_blue"
         tools:context=".MainActivity">
 
 
@@ -28,7 +28,7 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome to my card game"
+            android:text="@string/title_main"
             android:textSize="25sp"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
         android:id="@+id/imageView"
         android:layout_width="350dp"
         android:layout_height="300dp"
-        android:contentDescription="Image of cards"
+        android:contentDescription="@string/main_image_description"
         android:padding="8dp"
         android:src="@drawable/cards"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"

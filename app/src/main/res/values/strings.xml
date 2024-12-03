@@ -2,4 +2,13 @@
     <string name="app_name">CardGame</string>
     <string name="menu_start_game">Start Game</string>
     <string name="menu_rules">Rules</string>
+    <string name="flipped_card_description">Flipped card</string>
+    <string name="player_card_description">Player\'s card</string>
+    <string name="player_score">Player: 0</string>
+    <string name="flip_card_btn">Flip Card</string>
+    <string name="draw_card_btn">Draw Card</string>
+    <string name="opponent_score">Opponent: 0</string>
+    <string name="opponents_card_description">Opponents card</string>
+    <string name="title_main">Welcome to my card game</string>
+    <string name="main_image_description">Image of cards</string>
 </resources>
