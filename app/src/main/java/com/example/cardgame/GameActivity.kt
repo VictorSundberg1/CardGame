@@ -1,6 +1,7 @@
 package com.example.cardgame
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -129,7 +130,7 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun getCardImageResource(rank: String, suit: String): Int {
-        val resourceName = "${rank.lowercase()}_of_${suit.lowercase()}"
+        val resourceName = "${rank}_of_${suit}"
         return CardImageMap.cardResources[resourceName]?:
         throw IllegalArgumentException("$resourceName not found")
     }
