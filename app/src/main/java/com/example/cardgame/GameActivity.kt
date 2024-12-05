@@ -1,6 +1,5 @@
 package com.example.cardgame
 
-import android.content.Context
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -56,7 +55,9 @@ class GameActivity : AppCompatActivity() {
             opponentCard = deck.random().also { deck.remove(it) }
             displayCard(playerCardView, playerCard)
             displayCard(opponentCardView, opponentCard)
+
             flippedCardView.setImageResource(R.drawable.back_of_card)
+
             flipButton.isVisible = true
             drawButton.isVisible = false
         }
