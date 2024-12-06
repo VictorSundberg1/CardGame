@@ -37,13 +37,13 @@ class GameActivity : AppCompatActivity() {
         recyclerView.adapter = roundResultsAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val deck = generateDeck()
-
         val playerCardView: ImageView = findViewById(R.id.playerCard)
         val opponentCardView: ImageView = findViewById(R.id.opponentCard)
         val flippedCardView: ImageView = findViewById(R.id.flippedCard)
         val flipButton: Button = findViewById(R.id.flipBtn)
         val drawButton: Button = findViewById(R.id.drawBtn)
+
+        val deck = generateDeck()
 
         drawButton.setOnClickListener {
             if (deck.size < 2){
