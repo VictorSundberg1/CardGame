@@ -19,4 +19,5 @@
     4. The winner then gets 1 point or if its a tie no points.
     5. The game goes on until no cards are left in the deck.
 </string>
+    <string name="menu_stats">Stats</string>
 </resources>
